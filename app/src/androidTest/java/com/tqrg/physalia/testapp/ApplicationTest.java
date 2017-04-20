@@ -1,12 +1,5 @@
 package com.tqrg.physalia.testapp;
 
-import android.app.Application;
-import android.support.test.uiautomator.UiObject;
-import android.test.ApplicationTestCase;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +11,10 @@ import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject2;
 import android.support.test.uiautomator.Until;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 
 /**
@@ -218,7 +215,7 @@ public class ApplicationTest {
 
     @Test
     public void backButton(){
-        for(int i=0; i<40; i++) {
+        for(int i=0; i<200; i++) {
             mDevice.pressBack();
         }
     }

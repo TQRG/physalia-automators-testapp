@@ -155,23 +155,24 @@ public class ApplicationTest {
 
     @Test
     public void dragndrop(){
-        UiObject2 button1 = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_1"));
-        UiObject2 button2 = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_2"));
-        UiObject2 button3 = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_3"));
-        UiObject2 buttonFab = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "fab"));
-        UiObject2 textArea = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "text_area"));
+        final UiObject2 button1 = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_1"));
+        final UiObject2 button2 = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_2"));
+        final UiObject2 button3 = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_3"));
+        final UiObject2 buttonFab = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "fab"));
+        final UiObject2 textArea = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "text_area"));
 
-        UiObject2 moves[] = {
+        final UiObject2 moves[] = {
             button1, button2,
             button2, button3,
             buttonFab, button3,
             buttonFab, textArea,
         };
+        final int moves_length = moves.length;
 
         for(int i=0; i<10; i++) {
             UiObject2 elementStart;
             UiObject2 elementStop;
-            for (int moveIndex = 0 ; (moveIndex+1)< moves.length; moveIndex+=2) {
+            for (int moveIndex = 0 ; (moveIndex+1)< moves_length; moveIndex+=2) {
                 elementStart = moves[moveIndex];
                 elementStop = moves[moveIndex+1];
                 elementStart.drag(elementStop.getVisibleCenter());

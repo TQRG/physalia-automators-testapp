@@ -59,7 +59,7 @@ public class ApplicationTest {
     @Test
     public void findById() {
         for(int i=0; i<40; i++){
-            mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_1")).click();
+            mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_1"));
             mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_2"));
             mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_3"));
             mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "text_field"));

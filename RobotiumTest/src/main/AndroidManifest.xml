@@ -7,4 +7,6 @@
             </intent-filter>
         </activity>
     </application>
-<instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="com.tqrg.physalia.testapp"/></manifest>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <instrumentation android:name="android.test.InstrumentationTestRunner" android:targetPackage="com.tqrg.physalia.testapp"/></manifest>

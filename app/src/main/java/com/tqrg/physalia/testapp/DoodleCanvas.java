@@ -32,6 +32,7 @@ public class DoodleCanvas  extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if(ScrollingActivity.interactive)
         canvas.drawPath(mPath, mPaint);
         super.onDraw(canvas);
     }
@@ -44,16 +45,22 @@ public class DoodleCanvas  extends View {
 
             case MotionEvent.ACTION_DOWN:
                 getParent().requestDisallowInterceptTouchEvent(true);
-                mPath.moveTo(event.getX(), event.getY());
+                if(ScrollingActivity.interactive) {
+                    mPath.moveTo(event.getX(), event.getY());
+                }
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                mPath.lineTo(event.getX(), event.getY());
+                if(ScrollingActivity.interactive) {
+                    mPath.lineTo(event.getX(), event.getY());
+                }
                 invalidate();
                 break;
 
             case MotionEvent.ACTION_UP:
-                getParent().requestDisallowInterceptTouchEvent(false);
+                if(ScrollingActivity.interactive) {
+                    getParent().requestDisallowInterceptTouchEvent(false);
+                }
                 break;
         }
 

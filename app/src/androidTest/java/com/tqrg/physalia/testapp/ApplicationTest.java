@@ -221,13 +221,14 @@ public class ApplicationTest {
         }
     }
 
-//    @Test
-//    public void inputText(){
-//        UiObject2 textField = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "text_field"));
-//        for(int i=0; i<40; i++) {
-//            textField.setText("Physalia says hi!");
-//        }
-//    }
+    @Test
+    public void inputText(){
+        UiObject2 textField = mDevice.findObject(By.res(BASIC_SAMPLE_PACKAGE, "text_field"));
+        for(int i=0; i<10; i++) {
+            textField.setText("Physalia says hi!");
+            textField.clear();
+        }
+    }
 
     /**
      * Uses package manager to find the package name of the device launcher. Usually this package

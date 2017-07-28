@@ -157,6 +157,9 @@ public class RobotiumTest extends ActivityInstrumentationTestCase2 {
 
 	public void testInputText(){
 		final EditText textField = (EditText) solo.getView("text_field");
-		solo.typeText(textField, "Physalia says hi!");
+		for(int i=0; i < 10; i++){
+			solo.typeText(textField, "Physalia says hi!");
+			solo.clearEditText(textField);
+		}
 	}
 }

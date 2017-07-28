@@ -12,6 +12,7 @@ import android.widget.Button;
 
 public class ScrollingActivity extends AppCompatActivity {
 
+    public static final boolean interactive = false;
     int fabClicks = 0;
     int button1Clicks = 0;
     int button2Clicks = 0;
@@ -25,45 +26,48 @@ public class ScrollingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fabClicks++;
-                Snackbar.make(view, "Fab clicked "+ fabClicks +" times.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        if(interactive){
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    fabClicks++;
+                    Snackbar.make(view, "Fab clicked " + fabClicks + " times.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
 
-        Button button1 = (Button) findViewById(R.id.button_1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                button1Clicks++;
-                Snackbar.make(view, "Button1 clicked "+ button1Clicks +" times.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+            Button button1 = (Button) findViewById(R.id.button_1);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    button1Clicks++;
+                    Snackbar.make(view, "Button1 clicked " + button1Clicks + " times.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
 
-        Button button2 = (Button) findViewById(R.id.button_2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                button2Clicks++;
-                Snackbar.make(view, "Button2 clicked "+ button2Clicks +" times.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+            Button button2 = (Button) findViewById(R.id.button_2);
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    button2Clicks++;
+                    Snackbar.make(view, "Button2 clicked " + button2Clicks + " times.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
 
-        Button button3 = (Button) findViewById(R.id.button_3);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                button3Clicks++;
-                Snackbar.make(view, "Button3 clicked "+ button3Clicks +" times.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+            Button button3 = (Button) findViewById(R.id.button_3);
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    button3Clicks++;
+                    Snackbar.make(view, "Button3 clicked " + button3Clicks + " times.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+
+        }
     }
 
     @Override
@@ -89,10 +93,13 @@ public class ScrollingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        backButtonPresses++;
-        View view = getWindow().getDecorView().findViewById(android.R.id.content);
-        Snackbar.make(view, "Back button pressed "+ backButtonPresses +" times.", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        if(interactive){
+            backButtonPresses++;
+            View view = getWindow().getDecorView().findViewById(android.R.id.content);
+            Snackbar.make(view, "Back button pressed " + backButtonPresses + " times.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+
     }
 
 }

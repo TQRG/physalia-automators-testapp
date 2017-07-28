@@ -19,9 +19,12 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.longClick;
 import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -55,35 +58,35 @@ public class EspressoTest {
     @Test
     public void findById() {
         for(int i=0; i<40; i++){
-            onView(withId(R.id.button_1));
-            onView(withId(R.id.button_2));
-            onView(withId(R.id.button_3));
-            onView(withId(R.id.text_field));
-            onView(withId(R.id.fab));
-            onView(withId(R.id.paint));
-            onView(withId(R.id.text_area));
+            onView(withId(R.id.button_1)).check(matches(isDisplayed()));
+            onView(withId(R.id.button_2)).check(matches(isDisplayed()));
+            onView(withId(R.id.button_3)).check(matches(isDisplayed()));
+            onView(withId(R.id.text_field)).check(matches(isDisplayed()));
+            onView(withId(R.id.fab)).check(matches(isDisplayed()));
+            onView(withId(R.id.paint)).check(matches(isDisplayed()));
+            onView(withId(R.id.text_area)).check(matches(isDisplayed()));
         }
     }
 
     @Test
     public void findByDescription(){
         for(int i=0; i<40; i++){
-            onView(withContentDescription("Button One"));
-            onView(withContentDescription("Button Two"));
-            onView(withContentDescription("Button Three"));
-            onView(withContentDescription("Button Fab"));
-            onView(withContentDescription("Text Field"));
-            onView(withContentDescription("Paint"));
-            onView(withContentDescription("Text Area"));
+            onView(withContentDescription("Button One")).check(matches(isDisplayed()));
+            onView(withContentDescription("Button Two")).check(matches(isDisplayed()));
+            onView(withContentDescription("Button Three")).check(matches(isDisplayed()));
+            onView(withContentDescription("Button Fab")).check(matches(isDisplayed()));
+            onView(withContentDescription("Text Field")).check(matches(isDisplayed()));
+            onView(withContentDescription("Paint")).check(matches(isDisplayed()));
+            onView(withContentDescription("Text Area")).check(matches(isDisplayed()));
         }
     }
 
     @Test
     public void findByContent(){
         for(int i=0; i<40; i++){
-            onView(withText("Button 1")).perform(click());
-            onView(withText("Button 2"));
-            onView(withText("Button 3"));
+            onView(withText("Button 1")).check(matches(isDisplayed()));
+            onView(withText("Button 2")).check(matches(isDisplayed()));
+            onView(withText("Button 3")).check(matches(isDisplayed()));
         }
     }
 
@@ -191,10 +194,15 @@ public class EspressoTest {
     @Test
     public void inputText(){
         ViewInteraction textField = onView(withId(R.id.text_field));
-
-        //for(int i=0; i<40; i++) {
-            textField.perform(click()).perform(typeText("Physalia says hi!"));
-        //}
+        textField.perform(click());
+        for(int i=0; i<10; i++) {
+            textField.perform(typeText("Physalia says hi!")).perform(clearText());
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

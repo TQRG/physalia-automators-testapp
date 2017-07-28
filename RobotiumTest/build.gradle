@@ -53,8 +53,9 @@ android {
 afterEvaluate { 
     task assembleDebug(overwrite: true) {}
 
+    String originalAPK = projectDir.absolutePath+'/app/build/outputs/apk/app-debug.apk'
     task copyTask(type: Copy) {
-        from '/Users/cruz/dev/physalia-automators/apks/testapp_debug.apk'
+        from originalAPK
         into 'build/outputs/apk/'
         rename {
             'RobotiumTest-debug.apk'
